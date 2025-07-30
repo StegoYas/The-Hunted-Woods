@@ -1,0 +1,162 @@
+[gd_scene load_steps=17 format=3 uid="uid://bn7j5d72xaqah"]
+
+[ext_resource type="PackedScene" path="res://src/SoundHandlers/AmbianceSoundPlayer.tscn" id="1"]
+[ext_resource type="Script" uid="uid://dajb6jjrsvthu" path="res://src/levels/Level.gd" id="2"]
+[ext_resource type="PackedScene" path="res://src/characters/Player.tscn" id="3"]
+[ext_resource type="PackedScene" path="res://src/helpers/ForestCanvasModulate.tscn" id="4"]
+[ext_resource type="PackedScene" path="res://src/objects/Portal.tscn" id="5"]
+[ext_resource type="PackedScene" path="res://src/objects/Car.tscn" id="6"]
+[ext_resource type="TileSet" path="res://src/custom tilesets/TreesTileset.tres" id="7"]
+[ext_resource type="TileSet" path="res://src/custom tilesets/BackgroundTileset.tres" id="8"]
+[ext_resource type="TileSet" path="res://src/custom tilesets/WaterTileset.tres" id="9"]
+[ext_resource type="TileSet" path="res://src/custom tilesets/BloodTileset.tres" id="10"]
+[ext_resource type="TileSet" path="res://src/custom tilesets/PlateauTileset.tres" id="11"]
+[ext_resource type="TileSet" path="res://src/custom tilesets/DecorationTileset.tres" id="12"]
+[ext_resource type="PackedScene" path="res://src/helpers/Infinilight.tscn" id="13"]
+[ext_resource type="FontFile" uid="uid://d3tlhmlel8et3" path="res://Bohemian Typewriter.ttf" id="14"]
+[ext_resource type="PackedScene" path="res://src/objects/Branches.tscn" id="15"]
+
+[sub_resource type="FontFile" id="1"]
+fallbacks = Array[Font]([ExtResource("14")])
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+
+[node name="Level1" type="Node2D"]
+script = ExtResource("2")
+
+[node name="ForestCanvasModulate" parent="." instance=ExtResource("4")]
+color = Color(0.666667, 0.666667, 0.882353, 1)
+
+[node name="BackgroundTileMapGround" type="TileMap" parent="."]
+tile_set = ExtResource("8")
+format = 2
+
+[node name="Layer0" type="TileMapLayer" parent="BackgroundTileMapGround"]
+use_parent_material = true
+tile_set = ExtResource("8")
+
+[node name="BackgroundTileMapGround2" type="TileMap" parent="."]
+tile_set = ExtResource("8")
+format = 2
+
+[node name="Layer0" type="TileMapLayer" parent="BackgroundTileMapGround2"]
+use_parent_material = true
+tile_set = ExtResource("8")
+
+[node name="BackgroundTileMapBlood" type="TileMap" parent="."]
+tile_set = ExtResource("10")
+format = 2
+
+[node name="Layer0" type="TileMapLayer" parent="BackgroundTileMapBlood"]
+use_parent_material = true
+tile_set = ExtResource("10")
+
+[node name="BackgroundTileMapWater" type="TileMap" parent="."]
+tile_set = ExtResource("9")
+format = 2
+
+[node name="Layer0" type="TileMapLayer" parent="BackgroundTileMapWater"]
+use_parent_material = true
+tile_set = ExtResource("9")
+
+[node name="ForegroundTileMapPlateau" type="TileMap" parent="."]
+tile_set = ExtResource("11")
+format = 2
+
+[node name="Layer0" type="TileMapLayer" parent="ForegroundTileMapPlateau"]
+use_parent_material = true
+tile_set = ExtResource("11")
+
+[node name="ForegroundTileMapTrees" type="TileMap" parent="."]
+tile_set = ExtResource("7")
+format = 2
+
+[node name="Layer0" type="TileMapLayer" parent="ForegroundTileMapTrees"]
+use_parent_material = true
+tile_set = ExtResource("7")
+
+[node name="ForegroundTileMapDecoration" type="TileMap" parent="."]
+position = Vector2(477.936, 486.222)
+tile_set = ExtResource("12")
+format = 2
+
+[node name="Layer0" type="TileMapLayer" parent="ForegroundTileMapDecoration"]
+use_parent_material = true
+tile_set = ExtResource("12")
+
+[node name="Car" parent="." instance=ExtResource("6")]
+position = Vector2(664, 504)
+
+[node name="Portal" parent="Car" instance=ExtResource("5")]
+visible = false
+position = Vector2(8.00006, -480)
+scale = Vector2(4.44082, 1.88)
+
+[node name="SoundHandlers" type="Node" parent="."]
+
+[node name="Ambiance" parent="SoundHandlers" instance=ExtResource("1")]
+volume_db = -10.0
+
+[node name="Infinilight" parent="." instance=ExtResource("13")]
+
+[node name="Branches" parent="." instance=ExtResource("15")]
+position = Vector2(552, 352)
+
+[node name="Sprite2D" parent="Branches" index="2"]
+material = null
+
+[node name="Player" parent="." instance=ExtResource("3")]
+position = Vector2(656.411, 612.896)
+
+[node name="Instructions" type="Node2D" parent="."]
+position = Vector2(656.411, 612.896)
+
+[node name="Label1" type="Label" parent="Instructions"]
+self_modulate = Color(1, 1, 1, 0.372549)
+offset_left = -48.411
+offset_top = 19.104
+offset_right = 66.589
+offset_bottom = 38.104
+theme_override_fonts/font = SubResource("1")
+text = "WASD to move"
+
+[node name="Label5" type="Label" parent="Instructions"]
+self_modulate = Color(1, 1, 1, 0.372549)
+offset_left = -240.411
+offset_top = -116.896
+offset_right = -99.411
+offset_bottom = -97.896
+theme_override_fonts/font = SubResource("1")
+text = "Mouse to aim light"
+
+[node name="Label2" type="Label" parent="Instructions"]
+self_modulate = Color(1, 1, 1, 0.372549)
+offset_left = -168.411
+offset_top = -212.896
+offset_right = -9.41101
+offset_bottom = -193.896
+theme_override_fonts/font = SubResource("1")
+text = "Hold Shift to run"
+
+[node name="Label4" type="Label" parent="Instructions"]
+self_modulate = Color(1, 1, 1, 0.372549)
+offset_left = -200.411
+offset_top = -308.896
+offset_right = -41.411
+offset_bottom = -289.896
+theme_override_fonts/font = SubResource("1")
+text = "Avoid making noise"
+
+[node name="Label3" type="Label" parent="Instructions"]
+self_modulate = Color(1, 1, 1, 0.372549)
+offset_left = -144.411
+offset_top = -436.896
+offset_right = 15.589
+offset_bottom = -285.896
+theme_override_fonts/font = SubResource("1")
+text = "Follow the trail and save your friend"
+
+[editable path="Branches"]

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://d1jdd4oi7uoue"
+path="res://.godot/imported/Ambiance Scary Base v1.ogg-6aa27decb87080ea571d245514316cad.oggvorbisstr"
+
+[deps]
+
+source_file="res://sounds/environment/Ambiance Scary Base v1.ogg"
+dest_files=["res://.godot/imported/Ambiance Scary Base v1.ogg-6aa27decb87080ea571d245514316cad.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

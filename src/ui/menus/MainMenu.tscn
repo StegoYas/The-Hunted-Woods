@@ -1,0 +1,265 @@
+[gd_scene load_steps=17 format=3 uid="uid://15s4hnow1e3b"]
+
+[ext_resource type="Texture2D" uid="uid://b43qv5iaqsd6k" path="res://icon v2.png" id="1"]
+[ext_resource type="FontFile" uid="uid://dq0jni55qxbru" path="res://BebasNeue Bold.ttf" id="2"]
+[ext_resource type="TileSet" path="res://src/custom tilesets/PlateauTileset.tres" id="3"]
+[ext_resource type="TileSet" path="res://src/custom tilesets/BloodTileset.tres" id="4"]
+[ext_resource type="Texture2D" uid="uid://c8urbpi8asc3m" path="res://art/characters/32x32 Heroes Down.png" id="5"]
+[ext_resource type="FontFile" path="res://src/fonts/BebasNeue_18.tres" id="6"]
+[ext_resource type="Texture2D" uid="uid://cw18vpfheh6o5" path="res://art/object tilesets/32x32 Horror Blood.png" id="7"]
+[ext_resource type="Texture2D" uid="uid://2r8yn0tca60n" path="res://art/UI/Full Moon - background.png" id="8"]
+[ext_resource type="Script" uid="uid://bfiw0kunjw8tr" path="res://src/ui/menus/MainMenu.gd" id="10"]
+
+[sub_resource type="Animation" id="1"]
+resource_name = "float"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1.68179, 1.56917, 1),
+"update": 0,
+"values": [Vector2(577.25, 238.22), Vector2(577.25, 175.541), Vector2(577.25, 238.22)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5r8iq"]
+_data = {
+&"float": SubResource("1")
+}
+
+[sub_resource type="FontFile" id="2"]
+fallbacks = Array[Font]([ExtResource("2")])
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+
+[sub_resource type="StyleBoxEmpty" id="3"]
+
+[sub_resource type="FontFile" id="4"]
+fallbacks = Array[Font]([ExtResource("2")])
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+
+[sub_resource type="StyleBoxEmpty" id="5"]
+
+[sub_resource type="FontFile" id="6"]
+fallbacks = Array[Font]([ExtResource("2")])
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+
+[node name="MainMenu" type="CanvasLayer"]
+script = ExtResource("10")
+
+[node name="SpriteHolder" type="Node2D" parent="."]
+position = Vector2(12.0914, -6.26794)
+
+[node name="background" type="Sprite2D" parent="SpriteHolder"]
+modulate = Color(0.588235, 0.588235, 0.588235, 1)
+position = Vector2(556.373, 398.795)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("8")
+
+[node name="ghost" type="Sprite2D" parent="SpriteHolder"]
+self_modulate = Color(1, 1, 1, 0.415686)
+position = Vector2(577.25, 238.22)
+scale = Vector2(9.86798, 9.86798)
+texture = ExtResource("1")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SpriteHolder/ghost"]
+libraries = {
+&"": SubResource("AnimationLibrary_5r8iq")
+}
+
+[node name="Ground" type="TileMap" parent="SpriteHolder"]
+position = Vector2(-220.794, 76.6138)
+scale = Vector2(4.2, 3)
+tile_set = ExtResource("3")
+format = 2
+
+[node name="HangingTree" type="Sprite2D" parent="SpriteHolder"]
+position = Vector2(178.105, 222.791)
+rotation = -3.14159
+scale = Vector2(3, -3)
+
+[node name="body" type="Sprite2D" parent="SpriteHolder/HangingTree"]
+position = Vector2(-48, 8)
+texture = ExtResource("7")
+region_enabled = true
+region_rect = Rect2(8, 288, 64, 160)
+
+[node name="end" type="Sprite2D" parent="SpriteHolder/HangingTree"]
+position = Vector2(32, 0)
+texture = ExtResource("7")
+region_enabled = true
+region_rect = Rect2(96, 288, 32, 152)
+
+[node name="mid" type="Sprite2D" parent="SpriteHolder/HangingTree"]
+texture = ExtResource("7")
+region_enabled = true
+region_rect = Rect2(128, 288, 32, 152)
+
+[node name="Blood" type="TileMap" parent="SpriteHolder"]
+position = Vector2(87.0202, 74.5887)
+scale = Vector2(3, 3)
+tile_set = ExtResource("4")
+format = 2
+
+[node name="32x32 Horror Blood2" type="Sprite2D" parent="SpriteHolder/Blood"]
+visible = false
+position = Vector2(103.836, 128.446)
+texture = ExtResource("7")
+region_enabled = true
+region_rect = Rect2(256, 32, 96, 120)
+
+[node name="Trees" type="Node2D" parent="SpriteHolder"]
+position = Vector2(398.528, 459.925)
+scale = Vector2(3, 3)
+
+[node name="32x32 Horror Blood3" type="Sprite2D" parent="SpriteHolder/Trees"]
+position = Vector2(-1.15755, 12.1538)
+texture = ExtResource("7")
+region_enabled = true
+region_rect = Rect2(416, 96, 64, 64)
+
+[node name="32x32 Horror Blood4" type="Sprite2D" parent="SpriteHolder/Trees"]
+position = Vector2(120.585, 31.8107)
+scale = Vector2(-1, 1)
+texture = ExtResource("7")
+region_enabled = true
+region_rect = Rect2(480, 96, 32, 64)
+
+[node name="32x32 Horror Blood" type="Sprite2D" parent="SpriteHolder/Trees"]
+position = Vector2(141.832, -26.4123)
+texture = ExtResource("7")
+region_enabled = true
+region_rect = Rect2(256, 368, 120, 144)
+
+[node name="Woman" type="Sprite2D" parent="SpriteHolder"]
+position = Vector2(652.653, 531.308)
+rotation = -0.174536
+scale = Vector2(3, 3)
+texture = ExtResource("5")
+region_enabled = true
+region_rect = Rect2(200, 136, 48, 56)
+
+[node name="Man" type="Sprite2D" parent="SpriteHolder"]
+position = Vector2(540.752, 514.443)
+rotation = 0.149632
+scale = Vector2(3, 3)
+texture = ExtResource("5")
+region_enabled = true
+region_rect = Rect2(136, 136, 48, 56)
+
+[node name="LoadingLabel" type="Label" parent="."]
+offset_left = 266.342
+offset_top = 330.263
+offset_right = 316.342
+offset_bottom = 345.263
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 1
+theme_override_fonts/font = ExtResource("6")
+text = "Loading..."
+
+[node name="LoadingLabel2" type="Label" parent="."]
+offset_left = 203.804
+offset_top = 388.912
+offset_right = 253.804
+offset_bottom = 403.912
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 1
+theme_override_fonts/font = ExtResource("6")
+text = "Loading..."
+
+[node name="TitlePart2" type="Label" parent="."]
+custom_minimum_size = Vector2(0, 200)
+offset_left = 116.34
+offset_top = 202.466
+offset_right = 564.34
+offset_bottom = 402.466
+theme_override_fonts/font = SubResource("2")
+text = "W   ods"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_left = 62.9791
+offset_top = 92.1144
+offset_right = 510.979
+offset_bottom = 468.114
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TitlePart1" type="Label" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 225)
+layout_mode = 2
+theme_override_fonts/font = SubResource("2")
+text = "THE HUNTED"
+
+[node name="NewGameButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 3
+theme_override_styles/focus = SubResource("3")
+shortcut_in_tooltip = false
+flat = true
+
+[node name="Label" type="Label" parent="VBoxContainer/NewGameButton"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 0
+offset_left = -11.9791
+offset_top = 20.8856
+offset_right = 188.021
+offset_bottom = 70.8856
+scale = Vector2(2.04, 1.72)
+theme_override_fonts/font = SubResource("4")
+text = "Start Game"
+
+[node name="CreditsButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 45)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/focus = SubResource("5")
+flat = true
+
+[node name="Label" type="Label" parent="VBoxContainer/CreditsButton"]
+layout_mode = 0
+offset_left = -11.9791
+offset_top = 27.8856
+offset_right = 28.0209
+offset_bottom = 43.8856
+scale = Vector2(1.76, 1.52)
+theme_override_fonts/font = SubResource("6")
+text = "Credits"
+
+[node name="VersionLabel" type="Label" parent="VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 1
+theme_override_fonts/font = ExtResource("6")
+text = "
+WASD/Arrow Keys to move
+Hold Shift to run
+Move mouse to move flashlight
+
+Version 1.2.1
+Made for Weekly Game Jam 
+Week 147
+Theme: Invisible"
+
+[connection signal="pressed" from="VBoxContainer/NewGameButton" to="." method="_on_NewGameButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/CreditsButton" to="." method="_on_CreditsButton_pressed"]
